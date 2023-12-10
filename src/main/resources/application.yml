@@ -21,5 +21,27 @@ spring:
       hibernate:
         ddl-auto: validate
         '[format_sql]': true
-        dialect: org.hibernate.dialect.MySQLDialect
-        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    hibernate:
+      ddl-auto: validate
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      
+---
+
+# Docker Host DB Profile
+spring:
+  config:
+    activate.on-profile: docker-host
+# Database Settings
+  datasource:
+    url: jdbc:mysql://host.docker.internal:3306/mydb  
+    
+---
+# Docker Container DB Profile
+spring:
+  config:
+    activate.on-profile: docker-container
+# Database Settings
+  datasource:
+    url: jdbc:mysql://mydb:3306/mydb
+    username: root
+    password: root 
