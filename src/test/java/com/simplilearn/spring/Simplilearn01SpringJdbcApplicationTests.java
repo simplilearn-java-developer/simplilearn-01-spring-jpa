@@ -11,7 +11,7 @@ import com.simplilearn.spring.controller.UserController;
 @SpringBootTest
 class Simplilearn01SpringJdbcApplicationTests {
 
-    //@Autowired
+    @Autowired
     UserController userController;
 
     @Test
